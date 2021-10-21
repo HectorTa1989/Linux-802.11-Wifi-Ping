@@ -1,9 +1,6 @@
 # Linux-802.11-Wifi-Ping
 =========
 
-
-
-
 What is it?
 -----------
 
@@ -17,16 +14,16 @@ What can it be used for?
 * To prevent power save mode of a particular device device (try the -m option.)
 * To test the link quality (by sending "pings" with at different data rates.)
 
-The most important advantage over a normal "ping" is that 80211ping works on the link layer. Hence, you don't need to be associated to the same wireless network as the target, in fact, both devices don't need to be associated at all. Firewalls blocking ICMP, wrong IP addresses etc. do not matter since they are all on network layer.
+The most important advantage over a normal "ping" is that i80211WifiPing works on the link layer. Hence, you don't need to be associated to the same wireless network as the target, in fact, both devices don't need to be associated at all. Firewalls blocking ICMP, wrong IP addresses etc. do not matter since they are all on network layer.
 
 
 How to use?
 -----------
 
 ### In general
-    80211ping 0.1
+    i80211WifiPing 0.1
     Usage:
-     80211ping <options> <destination>
+     i80211WifiPing <options> <destination>
       -I <device>    device to use (mandatory, device must be in monitor mode)
       -c <count>     stop after sending <count> packets (default: don't stop)
       -i <interval>  send packet each <interval> ms (default: 1000 ms)
@@ -34,7 +31,7 @@ How to use?
       -m             set "more data" flag
 
 ### Example
-    $ sudo ./80211ping -I mon0 -c 10 XX:XX:XX:XX:XX:XX
+    $ sudo ./i80211WifiPing -I mon0 -c 10 XX:XX:XX:XX:XX:XX
     Sending null data frames from AE:24:BC:89:AF:9F to XX:XX:XX:XX:XX:XX every 1.00s...
     Sending frame to XX:XX:XX:XX:XX:XX: reply received! (1 duplicate ACKs)
     Sending frame to XX:XX:XX:XX:XX:XX: reply received!
@@ -48,7 +45,7 @@ How to use?
     Sending frame to XX:XX:XX:XX:XX:XX: reply received!
     10 packets sent, 6 packets acknowledged (60.0%)
 
-80211ping needs a network device in monitor mode that uses Radiotap headers. So far I tested 80211ping with MadWiFi and iwlwifi, but any mac80211 based wireless LAN driver should work as long as it does support frame injection. To use 80211ping, you can create a monitor mode device in parallel to another device.
+i80211WifiPing needs a network device in monitor mode that uses Radiotap headers. So far I tested i80211WifiPing with MadWiFi and iwlwifi, but any mac80211 based wireless LAN driver should work as long as it does support frame injection. To use i80211WifiPing, you can create a monitor mode device in parallel to another device.
 
 ### For iwlwifi (or other mac80211 based drivers):
     # iw dev wlan0 interface add mon0 type monitor
